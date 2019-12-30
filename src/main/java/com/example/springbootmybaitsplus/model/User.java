@@ -1,11 +1,12 @@
 package com.example.springbootmybaitsplus.model;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+
+import com.baomidou.mybatisplus.annotation.SqlCondition;
+import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 
-import java.util.Objects;
+import java.time.LocalDateTime;
+
 
 /**
  * @author huanfuan
@@ -14,17 +15,21 @@ import java.util.Objects;
  */
 
 @Data
-@TableName("user")
 public class User {
 
-    @TableId(value = "id",type = IdType.AUTO)
     private Long id;
 
+    @TableField(condition = SqlCondition.LIKE)
     private String name;
 
+    @TableField(condition = "%s&lt;#{%s}")
     private Integer age;
 
     private String email;
+
+    private Long managerId;
+
+    private LocalDateTime createTime;
 
 
 

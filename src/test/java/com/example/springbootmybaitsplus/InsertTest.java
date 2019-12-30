@@ -2,13 +2,13 @@ package com.example.springbootmybaitsplus;
 
 import com.example.springbootmybaitsplus.mapper.UserMapper;
 import com.example.springbootmybaitsplus.model.User;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -18,7 +18,7 @@ import java.util.List;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SampleTest {
+public class InsertTest {
 
 
     @Autowired
@@ -26,10 +26,15 @@ public class SampleTest {
 
 
     @Test
-    public void  select(){
-        List<User> list=userMapper.selectList(null);
-        Assert.assertEquals(5,list.size());
-        list.forEach(System.out::println);
+    public void  insert(){
+        User user=new User();
+        user.setName("啾咪");
+        user.setAge(12);
+        user.setEmail("huanfuan@163.com");
+        user.setManagerId(1088248166370832385L);
+        user.setCreateTime(LocalDateTime.now());
+        int rows=userMapper.insert(user);
+        System.out.println("影响记录数："+rows);
     }
 
 }
