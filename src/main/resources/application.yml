@@ -15,4 +15,7 @@ mybatis-plus:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 
+  # mapper xml映射路径
+  mapper-locations: classpath*:mapper/**/*Mapper.xml
+
 

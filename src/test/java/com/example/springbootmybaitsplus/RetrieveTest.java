@@ -268,4 +268,15 @@ public class RetrieveTest {
                 .like(User::getName,"huan").ge(User::getAge,20).list();
         userList.forEach(System.out::println);
     }
+
+
+    @Test
+    public void selectMy() {
+
+        LambdaQueryWrapper<User> lambdaQuery= Wrappers.<User>lambdaQuery();
+        lambdaQuery.likeRight(User::getName,"huan")
+                .and(lqw->lqw.lt(User::getAge,40).or().isNotNull(User::getEmail));
+        List<User> userList=userMapper.selectAll(lambdaQuery);
+        userList.forEach(System.out::println);
+    }
 }

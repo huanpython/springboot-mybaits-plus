@@ -28,7 +28,7 @@ public class InsertTest {
     @Test
     public void  insert(){
         User user=new User();
-        user.setName("啾咪");
+        user.setName("haha");
         user.setAge(12);
         user.setEmail("huanfuan@163.com");
         user.setManagerId(1088248166370832385L);
